@@ -1,0 +1,358 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Converter</name>
+    </assembly>
+    <members>
+        <member name="T:Converter.MakeHHRECO">
+            <summary>
+            Converts a Sketch to the HHRECO format
+            </summary>
+        </member>
+        <member name="M:Converter.MakeHHRECO.#ctor(Sketch.Sketch)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="sketch"></param>
+        </member>
+        <member name="M:Converter.MakeHHRECO.writeXML(System.String)">
+            <summary>
+            Creates an xml document that HHRECO can use to learn
+            </summary>
+            <param name="filename"></param>
+        </member>
+        <member name="T:Converter.MakeXML">
+            <summary>
+            MakeXml is the class that provides the interface for creating the XML document.
+            </summary>
+        </member>
+        <member name="F:Converter.MakeXML.sketch">
+            <summary>
+            The Sketch
+            </summary>
+        </member>
+        <member name="M:Converter.MakeXML.#ctor(Sketch.Sketch)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="sketch">Create MakeXML from sketch</param>
+        </member>
+        <member name="M:Converter.MakeXML.#ctor(Converter.MakeXML)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="makeXML">Create a MakeXML from a copy of an existing one</param>
+        </member>
+        <member name="M:Converter.MakeXML.WriteXML(System.String)">
+            <summary>
+            Write the XML document with the given filename.
+            </summary>
+            <param name="filename">Name of the document to create</param>
+        </member>
+        <member name="M:Converter.MakeXML.Clone">
+            <summary>
+            Create a copy of this
+            </summary>
+            <returns>A new MakeXML</returns>
+        </member>
+        <member name="T:Converter.ReadXML">
+            <summary>
+            ReadXML class. Takes in a MIT XML file path and name and creates a Sketch.Sketch object
+            from the information.
+            </summary>
+        </member>
+        <member name="F:Converter.ReadXML.sketch">
+            <summary>
+            The Sketch to be created from the XML file
+            </summary>
+        </member>
+        <member name="F:Converter.ReadXML.shapeToArgsHT">
+            <summary>
+            A Hashtable linking Shape Ids to Substroke Ids
+            </summary>
+        </member>
+        <member name="F:Converter.ReadXML.strokeToSubstrokesHT">
+            <summary>
+            A Hashtable linking Stroke Ids to Substroke Ids
+            </summary>
+        </member>
+        <member name="F:Converter.ReadXML.substrokeToPointsHT">
+            <summary>
+            A Hashtable linking Substroke Ids to Point Ids
+            </summary>
+        </member>
+        <member name="F:Converter.ReadXML.pointsHT">
+            <summary>
+            A Hashtable linking Point Ids to Points
+            </summary>
+        </member>
+        <member name="M:Converter.ReadXML.#ctor(System.String)">
+            <summary>
+            Constructor. Creates a Sketch from an XML file.
+            </summary>
+            <param name="filepath">File path</param>
+        </member>
+        <member name="M:Converter.ReadXML.getStreamReader(System.String)">
+            <summary>
+            Gets an IO stream for the file.
+            </summary>
+            <param name="filepath">File path</param>
+            <returns>System.IO.Streamreader for the file</returns>
+        </member>
+        <member name="M:Converter.ReadXML.getXmlTextReader(System.IO.StreamReader)">
+            <summary>
+            Gets an XML Text reader for the IO stream
+            </summary>
+            <param name="stream">Stream to get an XML reader for</param>
+            <returns>An XML text reader for the IO stream</returns>
+        </member>
+        <member name="M:Converter.ReadXML.CreateSketch(System.String)">
+            <summary>
+            Constructs a Sketch from the given filename.
+            </summary>
+            <param name="filename">Filename/path for the MIT XML file</param>
+        </member>
+        <member name="M:Converter.ReadXML.RecShape(System.Guid,System.Collections.Hashtable,System.Collections.Hashtable,System.Collections.ArrayList@)">
+            <summary>
+            Recursively goes through a Shape in the Shapes hashtable and pulls out 
+            all of the Substrokes associated with the Shape.
+            
+            NOTE: Shapes can currently have Shape, Stroke, and Substroke arguments for subelements
+            (but no Points)
+            </summary>
+            <param name="id">Shape's Id</param>
+            <param name="allStrokes">A hashtable containing all of the file's Strokes (Id -> Stroke)</param>
+            <param name="allSubstrokes">A hashtable containing all of the file's Substrokes (Id -> Substroke)</param>
+            <param name="shapes">An ArrayList corresponding to the Shapes within this Shape</param>
+            <returns>An ArrayList of Substrokes</returns>
+        </member>
+        <member name="M:Converter.ReadXML.ReadSketchData(System.Xml.XmlTextReader)">
+            <summary>
+            Reads the Sketch XML attributes and cycles through the XML elements
+            </summary>
+            <param name="reader">XML text reader for the file</param>
+        </member>
+        <member name="M:Converter.ReadXML.ReadSketcher(System.Xml.XmlTextReader)">
+            <summary>
+            Reads the Sketch XML attributes
+            </summary>
+            <param name="reader">XML text reader for the file</param>
+        </member>
+        <member name="M:Converter.ReadXML.ReadStudy(System.Xml.XmlTextReader)">
+            <summary>
+            Reads the Study XML attributes
+            </summary>
+            <param name="reader">XML text reader for the file</param>
+        </member>
+        <member name="M:Converter.ReadXML.ReadDomain(System.Xml.XmlTextReader)">
+            <summary>
+            Reads the Domain XML attributes
+            </summary>
+            <param name="reader">XML text reader for the file</param>
+        </member>
+        <member name="M:Converter.ReadXML.ReadPoint(System.Xml.XmlTextReader)">
+            <summary>
+            Reads the Point XML attributes
+            </summary>
+            <param name="reader">XML text reader for the file</param>
+        </member>
+        <member name="M:Converter.ReadXML.ReadShape(System.Xml.XmlTextReader)">
+            <summary>
+            Reads the Shape XML attributes
+            </summary>
+            <param name="reader">XML text reader for the file</param>
+        </member>
+        <member name="M:Converter.ReadXML.ReadEdit(System.Xml.XmlTextReader)">
+            <summary>
+            Reads the Edit XML attributes
+            </summary>
+            <param name="reader">XML text reader for the file</param>
+        </member>
+        <member name="M:Converter.ReadXML.ReadSpeech(System.Xml.XmlTextReader)">
+            <summary>
+            Reads the Speech XML attributes
+            </summary>
+            <param name="reader">XML text reader for the file</param>
+        </member>
+        <member name="M:Converter.ReadXML.ReadMediaInfo(System.Xml.XmlTextReader)">
+            <summary>
+            Reads the Media XML attributes
+            </summary>
+            <param name="reader">XML text reader for the file</param>
+        </member>
+        <member name="P:Converter.ReadXML.Sketch">
+            <summary>
+            Returns the Sketch created.
+            </summary>
+        </member>
+        <member name="T:Converter.MakeJnt">
+            <summary>
+            Summary description for MakeJnt.
+            </summary>
+        </member>
+        <member name="M:Converter.MakeJnt.#ctor(Sketch.Sketch)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="sketch"></param>
+        </member>
+        <member name="M:Converter.MakeJnt.WriteJnt(System.String)">
+            <summary>
+            Write out to Jnt file
+            </summary>
+            <param name="filename"></param>
+        </member>
+        <member name="P:Converter.MakeJnt.Ink">
+            <summary>
+            Get Ink
+            </summary>
+        </member>
+        <member name="T:Converter.ReadJnt">
+            <summary>
+            ReadInk class.
+            </summary>
+        </member>
+        <member name="M:Converter.ReadJnt.#ctor(System.String)">
+            <summary>
+            Constructor, creates a Sketch from the first page of the file
+            </summary>
+            <param name="filename">The name of the file</param>
+        </member>
+        <member name="M:Converter.ReadJnt.#ctor(System.String,System.Int32)">
+            <summary>
+            Constructor, creates a Sketch from the page indicated 
+            </summary>
+            <param name="filename">The name of the file</param>
+            <param name="pageNumber">The page number</param>
+        </member>
+        <member name="M:Converter.ReadJnt.InkStroke2SketchStroke(Microsoft.Ink.Stroke,System.Drawing.Drawing2D.Matrix,System.Boolean)">
+            <summary>
+            Converts a single Microsoft Ink stroke to a Sketch stroke.  Setting transf to null
+            and shift to false will result in returning a simple conversion of Ink stroke to
+            Sketch stroke.  
+            </summary>
+            <param name="inkStroke">The Microsoft Ink stroke to convert</param>
+            <param name="transf">Transformation matrix for stroke shifting</param>
+            <param name="shift">True iff the transformation shift matrix should be used</param>
+            <returns>A Sketch stroke.</returns>
+            <seealso cref="M:Converter.ReadJnt.StripStrokeData(Microsoft.Ink.Stroke,System.Drawing.Drawing2D.Matrix,System.Boolean)">This function wraps for StripStrokeData()</seealso>
+        </member>
+        <member name="M:Converter.ReadJnt.ExtractXmlInkObject(System.Xml.XmlDocument,System.Int32)">
+            <summary>
+            Extracts InkObjects from a Microsoft JNT.XML file, which store information about Ink.Stroke data.
+            Converts each InkObject from a Base64 string into a byte array.
+            </summary>
+            <param name="xmlDoc">A Microsoft JNT.XML file that contains Ink data to be extracted.</param>
+            <param name="pageNumber">Page number to extract</param>
+            <returns>The Ink data of the document stored in an array of byte arrays</returns>
+        </member>
+        <member name="M:Converter.ReadJnt.CreateStrokes(Converter.ReadJnt.ByteHolder[])">
+            <summary>
+            Loads the byte array representation of a document's Ink objects into an array of actual Ink objects.
+            </summary>
+            <param name="strokeData">This array of byte arrays stores all of the stroke data contained in the document being converted.</param>
+            <returns>An array of Ink objects that have been loaded with the data saved in the passed byte arrays.</returns>
+        </member>
+        <member name="M:Converter.ReadJnt.CreateConvertedStrokes(Converter.ReadJnt.InkHolder[])">
+            <summary>
+            This function loops though each stroke contained in each Ink object in the document
+            and uses the stripStrokeData function to create a
+            Converter.Stroke for every Ink.Stroke.
+            </summary>
+            <param name="inkData">inkData is an array of Ink objects that together store all of the stroke data
+            contained in the document under consideration.</param>
+            <returns>ArrayList of Converter.Stroke that contains all of the data about the document's strokes.</returns>
+        </member>
+        <member name="M:Converter.ReadJnt.StripStrokeData(Microsoft.Ink.Stroke,System.Drawing.Drawing2D.Matrix,System.Boolean)">
+            <summary>
+            Takes an Ink.Stroke and outputs an internal representation that can 
+            then be output to an XML file
+            </summary>
+            <param name="inkStroke">Ink.Stroke which will have extracted from it the information necessary to store a Stroke in MIT XML.</param>
+            <param name="transf">Transformation matrix to shift the stroke by</param>
+            <param name="shift">Boolean for if we should shift by the transformation matrix</param>
+            <returns>PointsAndShape object that stores the extracted information.</returns>
+        </member>
+        <member name="M:Converter.ReadJnt.IsPropertyIncluded(Microsoft.Ink.Stroke,System.Guid)">
+            <summary>
+            Given a Stroke and a GUID, checks the Stroke's PacketDescription to see if the field corresponding to the GUID is there.
+            </summary>
+            <param name="stroke">Stroke to have it's PacketDescription checked</param>
+            <param name="pp">GUID of the field that are checking to see if the PacketDescription contains.</param>
+            <returns>bool that is true if the Stroke's PacketDescription has a field corresponding with the GUID.</returns>
+        </member>
+        <member name="M:Converter.ReadJnt.NumberOfPages(System.Xml.XmlDocument)">
+            <summary>
+            Return the number of Journal pages from a XmlDocument (Microsoft format)
+            </summary>
+            <param name="xmlDoc">XmlDocument from the Journal component</param>
+            <returns>Number of pages</returns>
+        </member>
+        <member name="M:Converter.ReadJnt.NumberOfPages(System.String)">
+            <summary>
+            Return the number of Journal pages from a XmlDocument (Microsoft format)
+            </summary>
+            <param name="filename">XML document's filename</param>
+            <returns>Number of pages</returns>
+        </member>
+        <member name="M:Converter.ReadJnt.GetMicrosoftXmlFromJournal(System.IO.Stream)">
+            <summary>
+            This code is coppied verbatim from an example on MSDN by Casey Chesnut 
+            http://msdn.microsoft.com/library/default.asp?url=/library/en-us/dntablet/html/tbconJournXML.asp
+            
+            It uses Microsoft's JournalReader.ReadFromStream method to change a binary JNT file 
+            into Microsoft's XML format
+            </summary>
+            <param name="stream">Stream containing a binary JNT file.</param>
+            <returns>XmlDocument in Microsoft's format, based on information from JNT file.</returns>
+        </member>
+        <member name="P:Converter.ReadJnt.Sketch">
+            <summary>
+            Get GetSketch
+            </summary>
+        </member>
+        <member name="T:Converter.ReadJnt.ByteHolder">
+            <summary>
+            ByteHolder initially holds all of the data from InkObjects in the Microsoft XML, in addition to a transformation matrix, if it exists
+            </summary>
+        </member>
+        <member name="F:Converter.ReadJnt.ByteHolder.inkBytes">
+            <summary>
+            Holds a byte array that corresponds to an ink object
+            </summary>
+        </member>
+        <member name="F:Converter.ReadJnt.ByteHolder.isShifted">
+            <summary>
+            Tells us if this ink object has been shifted
+            </summary>
+        </member>
+        <member name="F:Converter.ReadJnt.ByteHolder.shift">
+            <summary>
+            If the ink has been shifted, this stores the affine matrix that encodes
+            the shifting information
+            </summary>
+        </member>
+        <member name="T:Converter.ReadJnt.InkHolder">
+            <summary>
+            InkHolder stores the loaded version of Ink objects, once they have been converted out of their byte[] form.  It also contains a transformation
+            matrix, if it exists
+            </summary>
+        </member>
+        <member name="F:Converter.ReadJnt.InkHolder.inkInfo">
+            <summary>
+            Holds ink
+            </summary>
+        </member>
+        <member name="F:Converter.ReadJnt.InkHolder.isShifted">
+            <summary>
+            Tells us if this ink object has been shifted
+            </summary>
+        </member>
+        <member name="F:Converter.ReadJnt.InkHolder.shift">
+            <summary>
+            If the ink has been shifted, this stores the affine matrix that encodes 
+            the shifting information
+            </summary>
+        </member>
+    </members>
+</doc>

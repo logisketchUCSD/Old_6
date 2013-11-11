@@ -1,0 +1,29 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Adeline", "Adeline.csproj", "{A2EF46C2-BAF4-4BDC-B907-D597CE1B4A0F}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeuralNets", "..\NeuralNets\NeuralNets.csproj", "{8216E3F6-DC1C-456E-AEE0-43FB5FBA6A5D}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{A2EF46C2-BAF4-4BDC-B907-D597CE1B4A0F}.Debug.ActiveCfg = Debug|.NET
+		{A2EF46C2-BAF4-4BDC-B907-D597CE1B4A0F}.Debug.Build.0 = Debug|.NET
+		{A2EF46C2-BAF4-4BDC-B907-D597CE1B4A0F}.Release.ActiveCfg = Release|.NET
+		{A2EF46C2-BAF4-4BDC-B907-D597CE1B4A0F}.Release.Build.0 = Release|.NET
+		{8216E3F6-DC1C-456E-AEE0-43FB5FBA6A5D}.Debug.ActiveCfg = Debug|.NET
+		{8216E3F6-DC1C-456E-AEE0-43FB5FBA6A5D}.Debug.Build.0 = Debug|.NET
+		{8216E3F6-DC1C-456E-AEE0-43FB5FBA6A5D}.Release.ActiveCfg = Release|.NET
+		{8216E3F6-DC1C-456E-AEE0-43FB5FBA6A5D}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

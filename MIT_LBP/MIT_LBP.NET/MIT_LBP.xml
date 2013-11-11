@@ -1,0 +1,126 @@
+<ConversionLog>
+    <Settings>
+        <Setting
+            Name = "LogFile"
+            Value = "MIT_LBP.xml"
+        />
+        <Setting
+            Name = "ProjectName"
+            Value = "MIT_LBP"
+        />
+        <Setting
+            Name = "OutputDir"
+            Value = "C:\Documents and Settings\Da Vinci\My Documents\Visual Studio Projects\branches\redesign\MIT_LBP\MIT_LBP.NET"
+        />
+        <Setting
+            Name = "ProjectPath"
+            Value = "C:\Documents and Settings\Da Vinci\My Documents\Visual Studio Projects\branches\redesign\MIT_LBP"
+        />
+    </Settings>
+    <File
+        OldPath = "C:\Documents and Settings\Da Vinci\My Documents\Visual Studio Projects\branches\redesign\MIT_LBP\HashIndex.java"
+        NewPath = "C:\Documents and Settings\Da Vinci\My Documents\Visual Studio Projects\branches\redesign\MIT_LBP\MIT_LBP.NET\HashIndex.cs"
+    />
+    <File
+        OldPath = "C:\Documents and Settings\Da Vinci\My Documents\Visual Studio Projects\branches\redesign\MIT_LBP\MarkovRandomField.java"
+        NewPath = "C:\Documents and Settings\Da Vinci\My Documents\Visual Studio Projects\branches\redesign\MIT_LBP\MIT_LBP.NET\MarkovRandomField.cs"
+    >
+        <Class Name = "mit.ai.mrf.MarkovRandomField" >
+            <Section Name = "randomAssignment()" >
+                <Issue
+                    Type = "Runtime"
+                    Number = "1042"
+                    Severity = "3"
+                >Narrowing conversions may produce unexpected results in C#.</Issue>
+            </Section>
+            <Section Name = "generateGibbsSampleIndices(int[],int)" >
+                <Issue
+                    Type = "Runtime"
+                    Number = "1042"
+                    Severity = "3"
+                >Narrowing conversions may produce unexpected results in C#.</Issue>
+            </Section>
+            <Section Name = "logConfigurationValue(mit.ai.mrf.HashIndex[])" >
+                <Issue
+                    Type = "Compile"
+                    Number = "1000"
+                    LinkKeywordParam = "_javalangBooleangetBoolean_javalangString"
+                    Severity = "1"
+                >Method 'java.lang.Boolean.getBoolean' was not converted.</Issue>
+                <Issue
+                    Type = "Compile"
+                    Number = "1000"
+                    LinkKeywordParam = "_javalangBooleangetBoolean_javalangString"
+                    Severity = "1"
+                >Method 'java.lang.Boolean.getBoolean' was not converted.</Issue>
+                <Issue
+                    Type = "Compile"
+                    Number = "1000"
+                    LinkKeywordParam = "_javalangBooleangetBoolean_javalangString"
+                    Severity = "1"
+                >Method 'java.lang.Boolean.getBoolean' was not converted.</Issue>
+            </Section>
+            <Section Name = "icm(mit.ai.mrf.HashIndex[],int)" >
+                <Issue
+                    Type = "Compile"
+                    Number = "1000"
+                    LinkKeywordParam = "_javalangBooleangetBoolean_javalangString"
+                    Severity = "1"
+                >Method 'java.lang.Boolean.getBoolean' was not converted.</Issue>
+            </Section>
+            <Section Name = "breakFirstTie()" >
+                <Issue
+                    Type = "Compile"
+                    Number = "1000"
+                    LinkKeywordParam = "_javalangBooleangetBoolean_javalangString"
+                    Severity = "1"
+                >Method 'java.lang.Boolean.getBoolean' was not converted.</Issue>
+                <Issue
+                    Type = "Compile"
+                    Number = "1000"
+                    LinkKeywordParam = "_javalangBooleangetBoolean_javalangString"
+                    Severity = "1"
+                >Method 'java.lang.Boolean.getBoolean' was not converted.</Issue>
+            </Section>
+            <Section Name = "passMessages(int,int,boolean,double,double)" >
+                <Issue
+                    Type = "Compile"
+                    Number = "1000"
+                    LinkKeywordParam = "_javalangIntegergetInteger_javalangString_int"
+                    Severity = "1"
+                >Method 'java.lang.Integer.getInteger' was not converted.</Issue>
+                <Issue
+                    Type = "ToDo"
+                    Number = "1143"
+                    Severity = "3"
+                >The equivalent of method 'java.lang.Thread.run' is not an override method.</Issue>
+            </Section>
+        </Class>
+        <Class Name = "mit.ai.mrf.MarkovRandomField.BeliefPropagationThread" >
+            <Section Name = "run()" >
+                <Issue
+                    Type = "Compile"
+                    Number = "1000"
+                    LinkKeywordParam = "_javalangBooleangetBoolean_javalangString"
+                    Severity = "1"
+                >Method 'java.lang.Boolean.getBoolean' was not converted.</Issue>
+                <Issue
+                    Type = "Compile"
+                    Number = "1000"
+                    LinkKeywordParam = "_javalangBooleangetBoolean_javalangString"
+                    Severity = "1"
+                >Method 'java.lang.Boolean.getBoolean' was not converted.</Issue>
+            </Section>
+        </Class>
+    </File>
+    <File
+        OldPath = "C:\Documents and Settings\Da Vinci\My Documents\Visual Studio Projects\branches\redesign\MIT_LBP\MRFNode.java"
+        NewPath = "C:\Documents and Settings\Da Vinci\My Documents\Visual Studio Projects\branches\redesign\MIT_LBP\MIT_LBP.NET\MRFNode.cs"
+    />
+    <Issue
+        Type = "Global Warning"
+        Number = "4007"
+        Severity = "2"
+    >The startup class  doesn't exist in the project</Issue>
+</ConversionLog>
+

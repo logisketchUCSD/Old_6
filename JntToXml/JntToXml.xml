@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>JntToXml</name>
+    </assembly>
+    <members>
+        <member name="T:JntToXml.Program">
+            <summary>
+            Convert Microsoft Journal files into an XML standard.
+            </summary>
+        </member>
+        <member name="M:JntToXml.Program.Main(System.String[])">
+            <summary>
+            The main entry point for the application.
+            </summary>
+        </member>
+        <member name="M:JntToXml.Program.DirSearch(System.String,System.Collections.ArrayList@)">
+            <summary>
+            Perform a recursive directory search. http://support.microsoft.com/default.aspx?scid=kb;en-us;303974
+            </summary>
+            <param name="sDir">Directory to search recursively</param>
+            <param name="rFiles">Array to add the files to</param>
+        </member>
+    </members>
+</doc>

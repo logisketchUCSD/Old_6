@@ -1,0 +1,1107 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sketch</name>
+    </assembly>
+    <members>
+        <member name="T:Sketch.Substroke">
+            <summary>
+            Substroke class.
+            </summary>
+        </member>
+        <member name="F:Sketch.Substroke.points">
+            <summary>
+            The points of the Substroke
+            </summary>
+        </member>
+        <member name="F:Sketch.Substroke.parentStroke">
+            <summary>
+            This is the parent stroke
+            </summary>
+        </member>
+        <member name="F:Sketch.Substroke.parentShapes">
+            <summary>
+            This is the parent shape
+            </summary>
+        </member>
+        <member name="F:Sketch.Substroke.XmlAttrs">
+            <summary>
+            The XML attributes of the Substroke
+            </summary>
+        </member>
+        <member name="M:Sketch.Substroke.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Sketch.Substroke.#ctor(Sketch.Substroke)">
+            <summary>
+            Create a Substroke from an existing substroke
+            </summary>
+            <param name="substroke">The substroke to clone</param>
+        </member>
+        <member name="M:Sketch.Substroke.#ctor(Sketch.Point[],Sketch.XmlStructs.XmlShapeAttrs)">
+            <summary>
+            Creates a Substroke from an array of Points and the XML attributes
+            </summary>
+            <param name="pts">Array of Points</param>
+            <param name="XmlAttrs">The XML attributes of the stroke</param>
+        </member>
+        <member name="M:Sketch.Substroke.#ctor(System.Collections.ArrayList,Sketch.XmlStructs.XmlShapeAttrs)">
+            <summary>
+            Creates a Substroke from an ArrayList of Points and the XML attributes
+            </summary>
+            <param name="pts">ArrayList of Points</param>
+            <param name="XmlAttrs">The XML attributes of the stroke</param>
+        </member>
+        <member name="M:Sketch.Substroke.AddPoint(Sketch.Point)">
+            <summary>
+            Adds the Point to the Substroke's Point ArrayList. Uses binary search to find insertion spot
+            </summary>
+            <param name="point">Point to add</param>
+        </member>
+        <member name="M:Sketch.Substroke.AddPoints(Sketch.Point[])">
+            <summary>
+            Adds the Points to the Substroke's Point ArrayList.
+            </summary>
+            <param name="points">Points to add</param>
+        </member>
+        <member name="M:Sketch.Substroke.AddPoints(System.Collections.ArrayList)">
+            <summary>
+            Adds the Points to the Substroke's Point ArrayList.
+            </summary>
+            <param name="points">Points to add</param>
+        </member>
+        <member name="M:Sketch.Substroke.DeleteRange(System.Int32,System.Int32)">
+            <summary>
+            Deletes a range of Points from the Substroke.
+            </summary>
+            <param name="index">Index of the initial Point to delete</param>
+            <param name="count">How many to remove</param>
+        </member>
+        <member name="M:Sketch.Substroke.RemoveLabel(System.String)">
+            <summary>
+            Removes a label from the Substroke
+            </summary>
+            <param name="label">Label to remove</param>
+            <returns>The shape that was removed</returns>
+        </member>
+        <member name="M:Sketch.Substroke.SplitAt(System.Int32)">
+            <summary>
+            Splits a Substroke at the given index.
+            </summary>
+            <param name="index">Index where the Substroke should be split</param>
+        </member>
+        <member name="M:Sketch.Substroke.SplitAt(System.Int32[])">
+            <summary>
+            Splits a Substroke at the given indices.
+            </summary>
+            <param name="indices">Indices where the Substroke should be split</param>
+        </member>
+        <member name="M:Sketch.Substroke.GetLabels">
+            <summary>
+            Get the labels associated with a Substroke.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Sketch.Substroke.GetBeliefs">
+            <summary>
+            Get the beliefs associated with the labels
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Sketch.Substroke.GetFirstLabel">
+            <summary>
+            Get the first label
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Sketch.Substroke.GetFirstBelief">
+            <summary>
+            Get the first probability
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Sketch.Substroke.Clone">
+            <summary>
+            Clone this Substroke
+            </summary>
+            <returns>The cloned Substroke</returns>
+        </member>
+        <member name="M:Sketch.Substroke.System#IComparable#CompareTo(System.Object)">
+            <summary>
+            Compare this Substroke to another based on time.
+            Returns less than 0 if this time is less than the other's.
+            Returns 0 if this time is equal to the other's.
+            Returns greater than 0 if this time is greater than the other's.
+            </summary>
+            <param name="obj">The other Substroke to compare this one to</param>
+            <returns>An integer indicating how the Substroke times compare</returns>
+        </member>
+        <member name="P:Sketch.Substroke.Length">
+            <summary>
+            Get the number of Points in this substroke
+            </summary>
+        </member>
+        <member name="P:Sketch.Substroke.Points">
+            <summary>
+            Gets a Point[] of the points contained in the Substroke.
+            </summary>
+        </member>
+        <member name="P:Sketch.Substroke.PointsAL">
+            <summary>
+            Gets an ArrayList of Point of the points contained in the Substroke.
+            </summary>
+        </member>
+        <member name="P:Sketch.Substroke.ParentStroke">
+            <summary>
+            Get or set ParentStroke
+            </summary>
+        </member>
+        <member name="P:Sketch.Substroke.ParentShapes">
+            <summary>
+            Get or set ParentShape
+            </summary>
+        </member>
+        <member name="T:Sketch.Point">
+            <summary>
+            Point class.
+            </summary>
+        </member>
+        <member name="F:Sketch.Point.XmlAttrs">
+            <summary>
+            The XML attributes of the Point
+            </summary>
+        </member>
+        <member name="M:Sketch.Point.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Sketch.Point.#ctor(Sketch.Point)">
+            <summary>
+            Construct a new Point class from an existing Point.
+            </summary>
+            <param name="point">Existing Point to copy</param>
+        </member>
+        <member name="M:Sketch.Point.#ctor(Sketch.XmlStructs.XmlPointAttrs)">
+            <summary>
+            Construct a new Point class from XML attributes.
+            </summary>
+            <param name="XmlAttrs">The XML attributes of the Point</param>
+        </member>
+        <member name="M:Sketch.Point.Clone">
+            <summary>
+            Clone this Point.
+            </summary>
+            <returns>A Cloned point.</returns>
+        </member>
+        <member name="M:Sketch.Point.System#IComparable#CompareTo(System.Object)">
+            <summary>
+            Compare this Point to another based on time.
+            Returns less than 0 if this time is less than the other's.
+            Returns 0 if this time is equal to the other's.
+            Returns greater than 0 if this time is greater than the other's.
+            </summary>
+            <param name="obj">The other Point to compare this one to</param>
+            <returns>An integer indicating how the Point times compare</returns>
+        </member>
+        <member name="P:Sketch.Point.X">
+            <summary>
+            A getter for the x-coordinate of the Point.
+            This is created so we can bypass having to go into the XML Attributes,
+            because (x,y) coordinates are more closely tied to actual sketch and stroke
+            attributes than the XML format.
+            </summary>
+        </member>
+        <member name="P:Sketch.Point.Y">
+            <summary>
+            A getter for the y-coordinate of the Point.
+            This is created so we can bypass having to go into the XML Attributes,
+            because (x,y) coordinates are more closely tied to actual sketch and stroke
+            attributes than the XML format.
+            </summary>
+        </member>
+        <member name="P:Sketch.Point.Time">
+            <summary>
+            Get the ulong Time of this Point.
+            </summary>
+        </member>
+        <member name="P:Sketch.Point.Pressure">
+            <summary>
+            Get the ushort Pressure of this Point
+            </summary>
+        </member>
+        <member name="T:Sketch.Stroke">
+            <summary>
+            Stroke class.
+            </summary>
+        </member>
+        <member name="F:Sketch.Stroke.substrokes">
+            <summary>
+            What substrokes compose this Stroke
+            </summary>
+        </member>
+        <member name="F:Sketch.Stroke.XmlAttrs">
+            <summary>
+            The XML attributes of the Stroke
+            </summary>
+        </member>
+        <member name="M:Sketch.Stroke.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Sketch.Stroke.#ctor(Sketch.Stroke)">
+            <summary>
+            Creates a Stroke from a Stroke
+            </summary>
+            <param name="stroke">The Stroke</param>
+        </member>
+        <member name="M:Sketch.Stroke.#ctor(Sketch.Substroke[],Sketch.XmlStructs.XmlShapeAttrs)">
+            <summary>
+            Creates a Stroke from the corresponding Substrokes and XML attributes
+            </summary>
+            <param name="substrokes">Substrokes of the Stroke</param>
+            <param name="XmlAttrs">The XML attributes of the stroke</param>
+        </member>
+        <member name="M:Sketch.Stroke.#ctor(System.Collections.ArrayList,Sketch.XmlStructs.XmlShapeAttrs)">
+            <summary>
+            Creates a Stroke from the corresponding Substrokes and XML attributes
+            </summary>
+            <param name="substrokes">Substrokes of the Stroke</param>
+            <param name="XmlAttrs">The XML attributes of the stroke</param>
+        </member>
+        <member name="M:Sketch.Stroke.AddSubstroke(Sketch.Substroke)">
+            <summary>
+            Adds the Substroke to the Stroke's Substroke ArrayList.
+            Inserts the Substroke in ascending order.
+            </summary>
+            <param name="substroke">Substroke to add</param>
+        </member>
+        <member name="M:Sketch.Stroke.AddSubstrokes(Sketch.Substroke[])">
+            <summary>
+            Adds the Substrokes to the Stroke's Substroke ArrayList
+            </summary>
+            <param name="substrokes">Substrokes to add</param>
+        </member>
+        <member name="M:Sketch.Stroke.AddSubstrokes(System.Collections.ArrayList)">
+            <summary>
+            Adds the Substrokes to the Stroke's Substroke ArrayList
+            </summary>
+            <param name="substrokes">Substrokes to add</param>
+        </member>
+        <member name="M:Sketch.Stroke.RemoveSubstroke(Sketch.Substroke)">
+            <summary>
+            Removes a Substroke from the Stroke.
+            </summary>
+            <param name="substroke">Substroke to remove</param>
+            <returns>True iff the Substroke is removed</returns>
+        </member>
+        <member name="M:Sketch.Stroke.RemoveSubstrokes(System.Collections.ArrayList)">
+            <summary>
+            Removes an ArrayList of Substrokes from the Stroke.
+            </summary>
+            <param name="substrokes">Substrokes to remove</param>
+            <returns>True iff all Substrokes are removed</returns>
+        </member>
+        <member name="M:Sketch.Stroke.SplitSubstrokeAt(System.Int32,System.Int32)">
+            <summary>
+            Split the substroke at the given index at the point index
+            </summary>
+            <param name="substrokeIndex">Index of the substroke</param>
+            <param name="pointIndex">Index of the point to split at (the second half has the point)</param>
+        </member>
+        <member name="M:Sketch.Stroke.SplitSubstrokeAt(System.Int32,System.Int32[])">
+            <summary>
+            Split the substroke at the given index at the given indices
+            </summary>
+            <param name="substrokeIndex">The index of the substroke</param>
+            <param name="pointIndices">The indices to split at</param>
+        </member>
+        <member name="M:Sketch.Stroke.SplitSubstrokesAt(System.Int32[],System.Int32[])">
+            <summary>
+            Split the substrokes given by their indices at the given point split indices
+            </summary>
+            <param name="substrokeIndices"></param>
+            <param name="pointIndices"></param>
+        </member>
+        <member name="M:Sketch.Stroke.SplitSubstrokesAt(System.Int32[],System.Int32[][])">
+            <summary>
+            Split the substrokes given by their indices at the given indices
+            </summary>
+            <param name="substrokeIndices"></param>
+            <param name="pointIndices"></param>
+        </member>
+        <member name="M:Sketch.Stroke.SplitStrokeAt(System.Guid)">
+            <summary>
+            Splits a Stroke's Substroke into two Substrokes at the given Point GUID.
+            </summary>
+            <param name="pointId">Point Id indicating where the Substroke should be split</param>
+        </member>
+        <member name="M:Sketch.Stroke.SplitStrokeAt(System.Int32)">
+            <summary>
+            Split the given Stroke at the specified Point index. Automatically takes care of substroke messiness.
+            </summary>
+            <param name="pointIndex">Index to split the Stroke at</param>
+        </member>
+        <member name="M:Sketch.Stroke.SplitStrokeAt(System.Int32[])">
+            <summary>
+            Split the given Stroke at the specified Point indices. Automatically takes care of substroke messiness.
+            </summary>
+            <param name="pointIndices">Indices to split the Stroke at</param>
+        </member>
+        <member name="M:Sketch.Stroke.StrokeIndexToSubstrokeIndex(System.Int32)">
+            <summary>
+            Given a stroke index (from Points getter), return int[2]; int[0] is the index of the substroke; 
+            int[1] is the index of the point within the substroke
+            </summary>
+            <param name="strokeIndex"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sketch.Stroke.UpdateAttributes">
+            <summary>
+            Updates the spatial attributes of the Shape, such as the origin
+            and width of the shape
+            </summary>
+        </member>
+        <member name="M:Sketch.Stroke.Clone">
+            <summary>
+            Clone this Stroke.
+            </summary>
+            <returns>Clones a Stroke.</returns>
+        </member>
+        <member name="M:Sketch.Stroke.System#IComparable#CompareTo(System.Object)">
+            <summary>
+            Compare this Stroke to another based on time.
+            Returns less than 0 if this time is less than the other's.
+            Returns 0 if this time is equal to the other's.
+            Returns greater than if this time is greater than the other's.
+            </summary>
+            <param name="obj">The other Stroke to compare this one to</param>
+            <returns>An integer indicating how the Stroke times compare</returns>
+        </member>
+        <member name="P:Sketch.Stroke.Substrokes">
+            <summary>
+            Returns the sorted Substroke array of the Stroke
+            </summary>
+        </member>
+        <member name="P:Sketch.Stroke.Points">
+            <summary>
+            Get the Points of this Stroke
+            </summary>
+        </member>
+        <member name="T:Sketch.Shape">
+            <summary>
+            Shape class.
+            </summary>
+        </member>
+        <member name="F:Sketch.Shape.substrokes">
+            <summary>
+            Substrokes
+            </summary>
+        </member>
+        <member name="F:Sketch.Shape.shapes">
+            <summary>
+            Shapes
+            </summary>
+        </member>
+        <member name="F:Sketch.Shape.parentShape">
+            <summary>
+            Parent shape
+            </summary>
+        </member>
+        <member name="F:Sketch.Shape.XmlAttrs">
+            <summary>
+            Xml attributes of the Shape
+            </summary>
+        </member>
+        <member name="M:Sketch.Shape.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Sketch.Shape.#ctor(Sketch.Shape)">
+            <summary>
+            Constructor. Create from Shape.
+            </summary>
+            <param name="shape">A Shape.</param>
+        </member>
+        <member name="M:Sketch.Shape.#ctor(Sketch.Shape[],Sketch.Substroke[],Sketch.XmlStructs.XmlShapeAttrs)">
+            <summary>
+            Construct a Shape with given Shapes, Substrokes, and XML attributes.
+            </summary>
+            <param name="shapes">Shapes to add</param>
+            <param name="substrokes">Substrokes to add</param>
+            <param name="XmlAttrs">XML attributes of the Shape</param>
+        </member>
+        <member name="M:Sketch.Shape.#ctor(System.Collections.ArrayList,System.Collections.ArrayList,Sketch.XmlStructs.XmlShapeAttrs)">
+            <summary>
+            Construct a Shape with given Shapes, Substrokes, and XML attributes.
+            </summary>
+            <param name="shapes">Shapes to add</param>
+            <param name="substrokes">Substrokes to add</param>
+            <param name="XmlAttrs">XML attributes of the Shape</param>
+        </member>
+        <member name="M:Sketch.Shape.AddSubstroke(Sketch.Substroke)">
+            <summary>
+            Add a Substroke to this shape
+            </summary>
+            <param name="substroke">A Substroke</param>
+        </member>
+        <member name="M:Sketch.Shape.AddSubstrokes(Sketch.Substroke[])">
+            <summary>
+            Add Substrokes to this shape
+            </summary>
+            <param name="substrokes">The Substrokes</param>
+        </member>
+        <member name="M:Sketch.Shape.AddSubstrokes(System.Collections.ArrayList)">
+            <summary>
+            Add Substrokes to this shape
+            </summary>
+            <param name="substrokes">The Substrokes</param>
+        </member>
+        <member name="M:Sketch.Shape.AddShape(Sketch.Shape)">
+            <summary>
+            Add a Shape to this Shape
+            </summary>
+            <param name="shape">The Shape to add</param>
+        </member>
+        <member name="M:Sketch.Shape.AddShapes(Sketch.Shape[])">
+            <summary>
+            Add Shapes to this Shape
+            </summary>
+            <param name="shapes">The Shapes</param>
+        </member>
+        <member name="M:Sketch.Shape.AddShapes(System.Collections.ArrayList)">
+            <summary>
+            Add Shapes to this Shape
+            </summary>
+            <param name="shapes">The Shapes</param>
+        </member>
+        <member name="M:Sketch.Shape.RemoveSubstroke(Sketch.Substroke)">
+            <summary>
+            Removes a Substroke from the Shape.
+            </summary>
+            <param name="substroke">Substroke to remove</param>
+            <returns>True iff the Substroke is removed</returns>
+        </member>
+        <member name="M:Sketch.Shape.RemoveSubstrokes(System.Collections.ArrayList)">
+            <summary>
+            Removes an ArrayList of Substrokes from the Shape.
+            </summary>
+            <param name="substrokes">Substrokes to remove</param>
+            <returns>True iff all Substrokes are removed</returns>
+        </member>
+        <member name="M:Sketch.Shape.RemoveShape(Sketch.Shape)">
+            <summary>
+            Removes a Shape from the Shape.
+            </summary>
+            <param name="shape">Shape to remove</param>
+            <returns>True iff the Shape is removed</returns>
+        </member>
+        <member name="M:Sketch.Shape.RemoveShapes(System.Collections.ArrayList)">
+            <summary>
+            Removes an ArrayList of Shapes from the Shape.
+            </summary>
+            <param name="shapes">Shapes to remove</param>
+            <returns>True iff all Shapes are removed</returns>
+        </member>
+        <member name="M:Sketch.Shape.UpdateAttributes(Sketch.Shape)">
+            <summary>
+            Updates the spatial attributes of the Shape, such as the origin
+            and width of the shape
+            </summary>
+        </member>
+        <member name="M:Sketch.Shape.ChangeParentShape(Sketch.Shape)">
+            <summary>
+            Change this parent shape
+            </summary>
+            <param name="shape"></param>
+        </member>
+        <member name="M:Sketch.Shape.Clone">
+            <summary>
+            Compute the Clone of this shape.
+            </summary>
+            <returns>The Clone of this shape.</returns>
+        </member>
+        <member name="M:Sketch.Shape.System#IComparable#CompareTo(System.Object)">
+            <summary>
+            Compare this Shape to another based on time.
+            Returns less than 0 if this time is less than the other's.
+            Returns 0 if this time is equal to the other's.
+            Returns greater than if this time is greater than the other's.
+            </summary>
+            <param name="obj">The other Shape to compare this one to</param>
+            <returns>An integer indicating how the Shape times compare</returns>
+        </member>
+        <member name="P:Sketch.Shape.Substrokes">
+            <summary>
+            Get Substrokes
+            </summary>
+        </member>
+        <member name="P:Sketch.Shape.Shapes">
+            <summary>
+            Get Shapes
+            </summary>
+        </member>
+        <member name="P:Sketch.Shape.ParentShape">
+            <summary>
+            Get or set ParentShape
+            </summary>
+        </member>
+        <member name="T:Sketch.Sketch">
+            <summary>
+            Sketch class.
+            </summary>
+        </member>
+        <member name="F:Sketch.Sketch.strokes">
+            <summary>
+            The Strokes in a sketch
+            </summary>
+        </member>
+        <member name="F:Sketch.Sketch.shapes">
+            <summary>
+            The Shapes in a sketch
+            </summary>
+        </member>
+        <member name="F:Sketch.Sketch.XmlAttrs">
+            <summary>
+            The XML attributes of the Sketch
+            </summary>
+        </member>
+        <member name="M:Sketch.Sketch.#ctor">
+            <summary>
+            Construct a blank Sketch
+            </summary>
+        </member>
+        <member name="M:Sketch.Sketch.#ctor(Sketch.Sketch)">
+            <summary>
+            Create a new Sketch from an old one
+            </summary>
+            <param name="sketch">The Sketch to clone</param>
+        </member>
+        <member name="M:Sketch.Sketch.#ctor(Sketch.Stroke[],Sketch.XmlStructs.XmlSketchAttrs)">
+            <summary>
+            Construct a Sketch with given Strokes and XML attributes.
+            </summary>
+            <param name="strokes">The Strokes in the Sketch</param>
+            <param name="XmlAttrs">XML attributes of the Sketch</param>
+        </member>
+        <member name="M:Sketch.Sketch.#ctor(Sketch.Shape[],Sketch.XmlStructs.XmlSketchAttrs)">
+            <summary>
+            Construct a Sketch with given Shapes and XML attributes.
+            </summary>
+            <param name="shapes">The Shapes in the Sketch</param>
+            <param name="XmlAttrs">XML attributes of the Sketch</param>
+        </member>
+        <member name="M:Sketch.Sketch.#ctor(Sketch.Stroke[],Sketch.Shape[],Sketch.XmlStructs.XmlSketchAttrs)">
+            <summary>
+            Construct a Sketch with Strokes, Shapes, and XML attributes.
+            </summary>
+            <param name="strokes">The Strokes in the Sketch</param>
+            <param name="shapes">The Shapes in the Sketch</param>
+            <param name="XmlAttrs">XML attributes of the Sketch</param>
+        </member>
+        <member name="M:Sketch.Sketch.#ctor(System.Collections.ArrayList,System.Collections.ArrayList,Sketch.XmlStructs.XmlSketchAttrs)">
+            <summary>
+            Construct a Sketch with Strokes, Shapes, and XML attributes.
+            </summary>
+            <param name="strokes">The Strokes in the Sketch</param>
+            <param name="shapes">The Shapes in the Sketch</param>
+            <param name="XmlAttrs">XML attributes of the Sketch</param>
+        </member>
+        <member name="M:Sketch.Sketch.AddStroke(Sketch.Stroke)">
+            <summary>
+            Add a Strokes to the Sketch.
+            </summary>
+            <param name="stroke">The Stroke</param>
+        </member>
+        <member name="M:Sketch.Sketch.AddStrokes(Sketch.Stroke[])">
+            <summary>
+            Add Strokes to the Sketch.
+            </summary>
+            <param name="strokes">The Strokes</param>
+        </member>
+        <member name="M:Sketch.Sketch.AddStrokes(System.Collections.ArrayList)">
+            <summary>
+            Add Shapes to the sketch.
+            </summary>
+            <param name="strokes">The Strokes</param>
+        </member>
+        <member name="M:Sketch.Sketch.AddShape(Sketch.Shape)">
+            <summary>
+            Add a Shape to the sketch.
+            </summary>
+            <param name="shape">The Shape</param>
+        </member>
+        <member name="M:Sketch.Sketch.AddShapes(Sketch.Shape[])">
+            <summary>
+            Add Shapes to the sketch.
+            </summary>
+            <param name="shapes">The Shapes</param>
+        </member>
+        <member name="M:Sketch.Sketch.AddShapes(System.Collections.ArrayList)">
+            <summary>
+            Add Shapes to the sketch.
+            </summary>
+            <param name="shapes">The Shapes</param>
+        </member>
+        <member name="M:Sketch.Sketch.RemoveStroke(Sketch.Stroke)">
+            <summary>
+            Removes a Stroke from the Sketch.
+            </summary>
+            <param name="stroke">Stroke to remove</param>
+            <returns>True iff Stroke is removed</returns>
+        </member>
+        <member name="M:Sketch.Sketch.RemoveStrokes(System.Collections.ArrayList)">
+            <summary>
+            Removes an ArrayList of Strokes from the Sketch.
+            </summary>
+            <param name="strokes">Strokes to remove</param>
+            <returns>True iff all Strokes are removed</returns>
+        </member>
+        <member name="M:Sketch.Sketch.RemoveShape(Sketch.Shape)">
+            <summary>
+            Remove a Shape from the Sketch.
+            </summary>
+            <param name="shape">Shape to remove</param>
+            <returns>True iff the Shape is removed.</returns>
+        </member>
+        <member name="M:Sketch.Sketch.RemoveShapes(System.Collections.ArrayList)">
+            <summary>
+            Remove an ArrayList of Shapes from the Sketch.
+            </summary>
+            <param name="shapes">Shapes to remove</param>
+            <returns>True iff all Shapes are removed.</returns>
+        </member>
+        <member name="M:Sketch.Sketch.AddLabel(Sketch.Substroke,System.String)">
+            <summary>
+            Add the substroke into a new, labeled Shape.
+            </summary>
+            <param name="substroke">Substroke to be included in the label</param>
+            <param name="label">Label's string</param>
+            <returns>The labeled shape added to the Sketch</returns>
+        </member>
+        <member name="M:Sketch.Sketch.AddLabel(System.Collections.ArrayList,System.String)">
+            <summary>
+            Add the group of substrokes into a new, labeled Shape.
+            </summary>
+            <param name="substrokes">Substrokes to be included in the label</param>
+            <param name="label">Label's string</param>
+            <returns>The labeled shape added to the Sketch</returns>
+        </member>
+        <member name="M:Sketch.Sketch.AddLabel(Sketch.Substroke,System.String,System.Double)">
+            <summary>
+            Add the substroke into a new, labeled Shape.
+            </summary>
+            <param name="substroke">Substroke to be included in the label</param>
+            <param name="label">Label's string</param>
+            <param name="probability">Probability of a label's accuracy</param>
+            <returns>The labeled shape added to the Sketch</returns>
+        </member>
+        <member name="M:Sketch.Sketch.AddLabel(System.Collections.ArrayList,System.String,System.Double)">
+            <summary>
+            Add the group of substrokes into a new, labeled Shape.
+            </summary>
+            <param name="substrokes">Substrokes to be included in the label</param>
+            <param name="label">Label's string</param>
+            <param name="probability">Probability of a label's accuracy</param>
+            <returns>The labeled shape added to the Sketch</returns>
+        </member>
+        <member name="M:Sketch.Sketch.RemoveLabel(Sketch.Shape)">
+            <summary>
+            Remove a label from the Sketch.
+            </summary>
+            <param name="shape">Labeled Shape to remove from the Sketch</param>
+            <returns>True iff the labeled Shape is removed</returns>
+        </member>
+        <member name="M:Sketch.Sketch.GetShape(System.Guid)">
+            <summary>
+            Gets the corresponding Shape by its GUID.
+            </summary>
+            <param name="shapeId">GUID for the Shape</param>
+            <returns>The Shape that has the given GUID</returns>
+        </member>
+        <member name="M:Sketch.Sketch.GetStroke(System.Guid)">
+            <summary>
+            Gets the corresponding Stroke by its GUID.
+            </summary>
+            <param name="strokeId">GUID for the Stroke</param>
+            <returns>The Stroke that has the given GUID</returns>
+        </member>
+        <member name="M:Sketch.Sketch.GetSubstroke(System.Guid)">
+            <summary>
+            Gets the corresponding Substroke by its GUID.
+            </summary>
+            <param name="substrokeId">GUID for the Substroke</param>
+            <returns>The Substroke that has the given GUID</returns>
+        </member>
+        <member name="M:Sketch.Sketch.Clone">
+            <summary>
+            Compute a clone of this Sketch.
+            </summary>
+            <returns>The clone of this Sketch.</returns>
+        </member>
+        <member name="M:Sketch.Sketch.RemoveShapes">
+            <summary>
+            Clear all shapes from the sketch
+            </summary>
+        </member>
+        <member name="M:Sketch.Sketch.CompareToForCorrectness(Sketch.Sketch,System.Boolean)">
+            <summary>
+            Gets the correctness summary for this Sketch versus another.
+            Treats this Sketch as the source
+            </summary>
+            <param name="sketch"></param>
+            <param name="withId"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Sketch.Sketch.LabelStrings">
+            <summary>
+            Get the Label Strings (adds a "unlabeled" as the last one)
+            </summary>
+        </member>
+        <member name="P:Sketch.Sketch.Shapes">
+            <summary>
+            Get the Shapes of the Sketch
+            </summary>
+        </member>
+        <member name="P:Sketch.Sketch.Strokes">
+            <summary>
+            Gets the sorted Strokes (ascending based on time) in a Sketch.
+            </summary>
+        </member>
+        <member name="P:Sketch.Sketch.Substrokes">
+            <summary>
+            Gets the sorted Substrokes (ascending based on time) in a Sketch.
+            </summary>
+        </member>
+        <member name="P:Sketch.Sketch.Points">
+            <summary>
+            Gets the sorted Points (ascending based on time) in a Sketch.
+            </summary>
+        </member>
+        <member name="T:Sketch.XmlStructs">
+            <summary>
+            XmlStructs. Contains structs holding variables for relevant XML attributes.
+            </summary>
+        </member>
+        <member name="T:Sketch.XmlStructs.XmlSketchAttrs">
+            <summary>
+            XML attribute struct for the Sketch data
+            </summary>
+        </member>
+        <member name="F:Sketch.XmlStructs.XmlSketchAttrs.Id">
+            <summary>
+            GUID of the Sketch.
+            </summary>
+        </member>
+        <member name="F:Sketch.XmlStructs.XmlSketchAttrs.Units">
+            <summary>
+            Units of the Sketch.
+            </summary>
+            <example>Units = "Himetric"</example>
+        </member>
+        <member name="M:Sketch.XmlStructs.XmlSketchAttrs.getAttributeNames">
+            <summary>
+            Get the attribute names.
+            </summary>
+            <returns>A string array of attribute names</returns>
+        </member>
+        <member name="M:Sketch.XmlStructs.XmlSketchAttrs.getAttributeValues">
+            <summary>
+            Get the attribute values.
+            </summary>
+            <returns>An object array of attribute values</returns>
+        </member>
+        <member name="M:Sketch.XmlStructs.XmlSketchAttrs.Clone">
+            <summary>
+            Clone method.
+            </summary>
+            <returns>A new XmlSketchAttrs struct copying the old one's values</returns>
+        </member>
+        <member name="T:Sketch.XmlStructs.XmlSketcherAttrs">
+            <summary>
+            XML attribute struct for the Sketcher data
+            </summary>
+        </member>
+        <member name="F:Sketch.XmlStructs.XmlSketcherAttrs.Id">
+            <summary>
+            GUID of the Sketcher.
+            </summary>
+        </member>
+        <member name="F:Sketch.XmlStructs.XmlSketcherAttrs.XDpi">
+            <summary>
+            The DPI for the x-axis.
+            </summary>
+        </member>
+        <member name="F:Sketch.XmlStructs.XmlSketcherAttrs.YDpi">
+            <summary>
+            The DPI for the y-axis.
+            </summary>
+        </member>
+        <member name="F:Sketch.XmlStructs.XmlSketcherAttrs.Nickname">
+            <summary>
+            The nickname of the Sketcher.
+            </summary>
+        </member>
+        <member name="M:Sketch.XmlStructs.XmlSketcherAttrs.getAttributeNames">
+            <summary>
+            Get the attribute names.
+            </summary>
+            <returns>A string array of attribute names</returns>
+        </member>
+        <member name="M:Sketch.XmlStructs.XmlSketcherAttrs.getAttributeValues">
+            <summary>
+            Get the attribute values.
+            </summary>
+            <returns>An object array of attribute values</returns>
+        </member>
+        <member name="M:Sketch.XmlStructs.XmlSketcherAttrs.Clone">
+            <summary>
+            Clone method.
+            </summary>
+            <returns>A new XmlSketcherAttrs struct copying the old one's values</returns>
+        </member>
+        <member name="T:Sketch.XmlStructs.XmlStudyAttrs">
+            <summary>
+            XML attribute struct for the Study data
+            </summary>
+        </member>
+        <member name="F:Sketch.XmlStructs.XmlStudyAttrs.Name">
+            <summary>
+            Name of the study.
+            </summary>
+        </member>
+        <member name="M:Sketch.XmlStructs.XmlStudyAttrs.Clone">
+            <summary>
+            Clone method.
+            </summary>
+            <returns>A new XmlStudyAttrs struct copying the old one's values</returns>
+        </member>
+        <member name="T:Sketch.XmlStructs.XmlDomainAttrs">
+            <summary>
+            XML attribute struct for the Domain data
+            </summary>
+        </member>
+        <member name="F:Sketch.XmlStructs.XmlDomainAttrs.Name">
+            <summary>
+            Name of the domain.
+            </summary>
+        </member>
+        <member name="M:Sketch.XmlStructs.XmlDomainAttrs.Clone">
+            <summary>
+            Clone method.
+            </summary>
+            <returns>A new XmlDomainAttrs struct copying the old one's values</returns>
+        </member>
+        <member name="T:Sketch.XmlStructs.XmlShapeAttrs">
+            <summary>
+            XML attribute struct for the Shape data
+            </summary>
+        </member>
+        <member name="F:Sketch.XmlStructs.XmlShapeAttrs.Id">
+            <summary>
+            GUID of the Shape.
+            </summary>
+        </member>
+        <member name="F:Sketch.XmlStructs.XmlShapeAttrs.Name">
+            <summary>
+            Name of the Shape.
+            </summary>
+        </member>
+        <member name="F:Sketch.XmlStructs.XmlShapeAttrs.Time">
+            <summary>
+            Ending time of the drawn Shape.
+            </summary>
+        </member>
+        <member name="F:Sketch.XmlStructs.XmlShapeAttrs.Type">
+            <summary>
+            Type of the Shape.
+            </summary>
+        </member>
+        <member name="F:Sketch.XmlStructs.XmlShapeAttrs.Author">
+            <summary>
+            Shape's author. GUID representation.
+            </summary>
+        </member>
+        <member name="F:Sketch.XmlStructs.XmlShapeAttrs.Color">
+            <summary>
+            Color of the Shape. RGBA represenation.
+            </summary>
+        </member>
+        <member name="F:Sketch.XmlStructs.XmlShapeAttrs.Height">
+            <summary>
+            Height of the Shape.
+            </summary>
+        </member>
+        <member name="F:Sketch.XmlStructs.XmlShapeAttrs.Width">
+            <summary>
+            Width of the Shape.
+            </summary>
+        </member>
+        <member name="F:Sketch.XmlStructs.XmlShapeAttrs.Area">
+            <summary>
+            Area of the Shape.
+            </summary>
+        </member>
+        <member name="F:Sketch.XmlStructs.XmlShapeAttrs.LaysInk">
+            <summary>
+            Boolean for if we should draw the Shape's ink.
+            </summary>
+        </member>
+        <member name="F:Sketch.XmlStructs.XmlShapeAttrs.Orientation">
+            <summary>
+            Pen orientation when the Shape was drawn.
+            </summary>
+        </member>
+        <member name="F:Sketch.XmlStructs.XmlShapeAttrs.PenTip">
+            <summary>
+            Pen tip used in drawing the Shape. Either "Rectangle" or "Ball".
+            </summary>
+        </member>
+        <member name="F:Sketch.XmlStructs.XmlShapeAttrs.Raster">
+            <summary>
+            How to Render the Ink. Either "MaskPen" or "CopyPen".
+            </summary>
+        </member>
+        <member name="F:Sketch.XmlStructs.XmlShapeAttrs.SubstrokeOf">
+            <summary>
+            Stores the GUID of the Substroke's parent, if the current Shape
+            is a Substroke.
+            </summary>
+        </member>
+        <member name="F:Sketch.XmlStructs.XmlShapeAttrs.P1">
+            <summary>
+            First Point??
+            </summary>
+        </member>
+        <member name="F:Sketch.XmlStructs.XmlShapeAttrs.P2">
+            <summary>
+            End Point??
+            </summary>
+        </member>
+        <member name="F:Sketch.XmlStructs.XmlShapeAttrs.X">
+            <summary>
+            The x-coordinate of the upper left corner of the Shape??
+            </summary>
+        </member>
+        <member name="F:Sketch.XmlStructs.XmlShapeAttrs.Y">
+            <summary>
+            The y-coordinate of the upper left corner of the Shape??
+            </summary>
+        </member>
+        <member name="F:Sketch.XmlStructs.XmlShapeAttrs.Text">
+            <summary>
+            If the Shape is text, what is the actual text value.
+            </summary>
+        </member>
+        <member name="F:Sketch.XmlStructs.XmlShapeAttrs.LeftX">
+            <summary>
+            The x-coordinate of the upper left corner of the Shape.
+            </summary>
+        </member>
+        <member name="F:Sketch.XmlStructs.XmlShapeAttrs.TopY">
+            <summary>
+            The y-coordinate of the upper left corner of the Shape.
+            </summary>
+        </member>
+        <member name="F:Sketch.XmlStructs.XmlShapeAttrs.Control1">
+            <summary>
+            ??
+            </summary>
+        </member>
+        <member name="F:Sketch.XmlStructs.XmlShapeAttrs.Control2">
+            <summary>
+            ??
+            </summary>
+        </member>
+        <member name="F:Sketch.XmlStructs.XmlShapeAttrs.Start">
+            <summary>
+            The starting argument of the Shape.
+            </summary>
+        </member>
+        <member name="F:Sketch.XmlStructs.XmlShapeAttrs.End">
+            <summary>
+            The endign argument of the Shape.
+            </summary>
+        </member>
+        <member name="F:Sketch.XmlStructs.XmlShapeAttrs.Source">
+            <summary>
+            The source that generated this Shape.
+            </summary>
+        </member>
+        <member name="M:Sketch.XmlStructs.XmlShapeAttrs.getAttributeNames">
+            <summary>
+            Get the attribute names.
+            </summary>
+            <returns>A string array of attribute names</returns>
+        </member>
+        <member name="M:Sketch.XmlStructs.XmlShapeAttrs.getAttributeValues">
+            <summary>
+            Get the attribute values.
+            </summary>
+            <returns>An object array of attribute values</returns>
+        </member>
+        <member name="M:Sketch.XmlStructs.XmlShapeAttrs.Clone">
+            <summary>
+            Clone method.
+            </summary>
+            <returns>A new XmlShapeAttrs struct copying the old one's values</returns>
+        </member>
+        <member name="T:Sketch.XmlStructs.XmlPointAttrs">
+            <summary>
+            XML attribute struct for the Point data
+            </summary>
+        </member>
+        <member name="F:Sketch.XmlStructs.XmlPointAttrs.X">
+            <summary>
+            The x-coordinate of the Point.
+            </summary>
+        </member>
+        <member name="F:Sketch.XmlStructs.XmlPointAttrs.Y">
+            <summary>
+            The y-coordinate of the Point.
+            </summary>
+        </member>
+        <member name="F:Sketch.XmlStructs.XmlPointAttrs.Pressure">
+            <summary>
+            The pen pressure of the Point.
+            </summary>
+        </member>
+        <member name="F:Sketch.XmlStructs.XmlPointAttrs.Time">
+            <summary>
+            Time the Point was drawn.
+            </summary>
+        </member>
+        <member name="F:Sketch.XmlStructs.XmlPointAttrs.Name">
+            <summary>
+            Name of the Point.
+            </summary>
+        </member>
+        <member name="F:Sketch.XmlStructs.XmlPointAttrs.Id">
+            <summary>
+            The Point's GUID.
+            </summary>
+        </member>
+        <member name="M:Sketch.XmlStructs.XmlPointAttrs.getAttributeNames">
+            <summary>
+            Get the attribute names.
+            </summary>
+            <returns>A string array of attribute names</returns>
+        </member>
+        <member name="M:Sketch.XmlStructs.XmlPointAttrs.getAttributeValues">
+            <summary>
+            Get the attribute values.
+            </summary>
+            <returns>An object array of attribute values</returns>
+        </member>
+        <member name="M:Sketch.XmlStructs.XmlPointAttrs.Clone">
+            <summary>
+            Clone method.
+            </summary>
+            <returns>A new XmlPointAttrs struct copying the old one's values</returns>
+        </member>
+    </members>
+</doc>

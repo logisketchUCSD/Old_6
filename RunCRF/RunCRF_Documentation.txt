@@ -1,0 +1,184 @@
+*******
+* CRF *
+*******
+
+Note that this information is also available on the wiki.
+If you have any questions, feel free to send me an email: abakalov@cs.hmc.edu
+
+
+*********
+* Usage *
+*********
+
+All the CRF code is in the CRF folder, but you should do development (and run the CRF) through 
+the RunCRF project in the RunCRF folder. The executable is RunCRF.exe, and you have two main 
+options, to train the CRF or to use the CRF for inference on data. Also we have two types of 
+CRF: singlepass and multipass. The former is an ordinary CRF while the latter does a two-stage 
+recognition, for example, Gate vs. Nongate followed by Wire vs. Label (this is what we are 
+currently using).
+
+
+* Main commands (explanation of the flags follows):
+***************************************************
+
+The command for inference using an ordinary CRF should look like: (Note that all commands should 
+be one line)
+
+RunCRF.exe -fl -c tcrfGeneratedDuringTraining.tcrf -l labelFile.txt -d directoryOfFilesToBeLabeled
+
+The labeled files will be created in directoryOfFilesToBeLabeled with a .LABELED extension. 
+An alternative command to the one above is:
+
+RunCRF.exe -fl -c tcrfGeneratedDuringTraining.tcrf -l labelFile.txt -o outputFile.xml inputFile.xml
+
+The command for inference using a multipass CRF should look like:
+
+RunCRF.exe -p2 -fl -c firstStage.tcrf secondStage.tcrf -np2 numberOfLabels -l labelFileFirstStage.txt -lp2 labelFileSecondStage.txt -d directoryOfFilesToBeLabeled
+
+The command for training using an ordinary CRF should look like:
+
+RunCRF.exe -t -ft -n numberOfLabels -l labelFile.txt -o outputFile.tcrf -d directoryOfFilesForTraining
+
+The command for training using a multipass CRF should look like:
+
+RunCRF.exe -p2 -t -ft -n numberOfLabels -np2 numberOfLabels -l labelFileFirstStage.txt -lp2 labelFileSecondStage.txt -o outputFile.tcrf -d firectoryOfFilesForTraining
+
+
+Where
+
+[outputFile.xml] is the final result of classification, in MIT XML format;
+
+[inputfile.txt] is the unclassified MIT XML that you want to classify;
+
+and
+
+[numberOfLabels] is an integer >= 2 that indicates the number of different ways an individual stroke 
+   can be classified. It is 2 for wire/gate
+
+
+* Explanation of the flags/options
+***********************************
+
+[-fl] specifies that we are running fragmented labeling
+
+[-c tcrfGeneratedDuringTraining.tcrf] - specifies the location of the tcrf which we are loading; 
+    where tcrfGeneratedDuringTraining.tcrf is the crf you obtained from training.
+    (The .tcrf indicates trained crf, but it is really just a text file that keeps track of parameters.)
+
+[-l labelFile.txt] loads the labelFile.txt (you need the path to the file) which is used to translate 
+    between numerical and english representations of labels (like 0=wire, 1=gate). See the file 
+    Wire_Label_Domain_CRF.txt in Latest_Labeled_Data3, for an example.
+
+[-map mapFile.txt] loads a domain map file which is used with the LabelMapper utility to translate from
+      the domain that the input sketches are hand-labeled in to the output domain.  Map files (and more
+      documentation) can be found in Trunk/Data/Domains.
+
+[-d directoryOfFilesToBeLabeled] as it suggests, specifies the location of the directory containing the 
+    files we want to label.
+
+[-p2] specifies that we are in multipass mode.
+
+[-n] specifies the number of classes
+
+[-np2] specifies the number of classes during the second stage of the multipass recognition (e.g. for 
+       wire-label we have 2)
+
+[-lp2] specifies the location of the labelFile used during the second stage of the multipass recognition.
+
+[-t] flag specifices that the CRF is going to run training
+
+[-ft] fragments the input sketches before training
+
+[-o output.tcrf] specifies the name of the tcrf
+
+[-r] create a random CRF
+
+
+*****************
+* How to modify *
+*****************
+
+    * If you want to switch to a different multipass recognition, all you need to change is (1) the call 
+      to the function cleanUpSketch() as described in the region LABELING in RunCRF, (2) the calls to the 
+      function changeTypes() as described in the function initVars(), and (3) the string variable typeOfElement 
+      in the function doLabeling() as described in the function.
+    * If you want to modify the formula for updating messages in Loopy Belief Propagation, in case of evidence 
+      nodes, use the following formula(LaTex? syntax): $m_{ij}(x_j)=\sum_{x_i}f(x_i)\psi_{ij}(x_i, x_j)$ where 
+      $i$ is an evidence node, $m_{ij}$ is a message sent from $i$ to $j$, $\phi_i$ is a site potential and $\psi_{ij}$ 
+      is an interaction potential$f(x_i) = 1$ if $x_i$ is the observed label and $f(x_i) = 0$ if $x_i$ is not the 
+      observed label. Because of precision errors we are now using the log of the messages. Evidence nodes are 
+      currently not used, but if you want to use them, then uncomment the commented lines in the function 
+      passLogMessages() in MRFNode.cs in MIT_LBP. Also, currently evidence nodes are ones with labels "gate", 
+      if you want to change this, modify inferCSharp() in CRF.cs
+    * If you want to change the combination of feature functions to be used during each stage of recognition then 
+      you need to (1) modify the function numberIterFeatures() in SiteFeatures?.cs and in InteractionFeatures.cs, 
+      and (2) getSiteFeatures() and getInteractionFeatures() respectively in SiteFeatures?.cs and InteractionFeatures.cs. 
+      These source files reside in CRF.
+    * The main function that is integral to both training and classification is called infer(). It calculates the 
+      probabilities of each label on each node in the graph. 
+
+
+*********************
+* State of research *
+*********************
+
+* Summer 2008
+    * You can find detailed information about the research done during the summer of 2008 here: EricDoiLog
+    * Extensive testing was done with the newly added junction tree algorithm.  Tcrfs, analysis files, and a
+      summary of the results in tabular form can all be found in RunCRF/jtreeTests.  Please see the accompanying
+      documents for more information.
+
+* Summer 2007
+    * You can find detailed information about the research done during the summer of 2007 here: AntonBakalovLog
+    * The most recent results are in Latest_labeled_data3 and the correctly labeled sketches (used for testing) 
+      reside in ..\Code\Recognition\RunCRF\TESTS\INPUT-MULTIPASS. Look in the folder TESTS. It contains a lot of 
+      data from test runs. Also skim AntonBakalovLog since I logged a lot of results there. Some tcrf-s reside in 
+      the bin directory.
+    * Here are the approaches that were tested (in chronological order):
+          o Varying the sets of site and interaction feature functions in the CRF and the threshold parameters they 
+            use. The CRF was having troubles recognizing three types of strokes at the same time. It was tested in 
+            another simpler domain such as the one containing short lines, long lines and circles.
+          o Next, a multipass CRF was tested and it performed better. The best one is: Gate-Nongate classification 
+            followed by Wire-Label classification. The results from this multipass approach are in 
+            ..\Code\Recognition\RunCRF\Latest_Labeled_Data3
+          o Voting approaches were also tested:
+                + after a wire-label, a label-gate and wire-gate classification, each of the strokes had 2 labels 
+                  and we picked the one with the higher probability.
+                + each of the classifications mentioned on the the line above "votes" for a label of stroke. For each 
+                  stroke, the label with highest number of votes was selected. 
+          o Modified the inference method behind the CRF, namely Loopy Belief Propagation, so that we can tell it that 
+            certain strokes from the first stage of the recognition are correctly labeled (i.e. we "lock" labels).
+                + Testing MIT_LBP which uses log(message)-s and max product
+                + Testing MIT_LBP which uses messages and sum product 
+          o Tested feature functions which use information about strokes labeled during the first stage of recognition.
+          o Introduced a second technique to the system: Support Vector Machine (SVM). I tested all possible combinations 
+            of svm-s and kernel types (see the documentation for SvmWGL). Since the accuracy of the classification Gate vs. 
+            Nongate obtained by the CRF is realtively high, the best way to combine the svm and crf is to use svm's Wire vs . 
+            Label classification.The obtained accuracy is Wire: 71.551%, Gate: 76.360%, Label: 69.432%, Overall: 72.142% 
+
+
+************************
+* Important next steps *
+************************
+
+    * Loopy belief propagation is an inference algorithm which is not guaranteed to converge on graphs with loops such as 
+      ours. Even if it converges it is not guaranteed to converge to the correct marginals. There are some indications that 
+      this algorithm is not converging properly: (1) if we use the same feature functions with the same parameters and run 
+      training several times, we get a standard deviation of 6% in the accuracy, (2) the probability of mislabeled strokes 
+      is really high: ~1 (see the graphs in \RunCRF\Latest_Labeled_Data). Thus, if a given set of feature functions is tested, 
+      several runs need to be made.
+    * Test incremental training. 
+
+
+************
+* Bug list *
+************
+
+I have not noticed any bugs in RunCRF. However, we came across some issues during integration (see below). Those bugs should 
+be documented under Flow (or CircuitSimulatorUI). Issues noticed:
+
+    * The results obtained with the GUI (after the CRF component runs) are not the same as the ones produced after the CRF if 
+      the CRF runs independently from the GUI. Approaches to solve this:
+          o run a file from the folder Latest_Labeled_Data3 (the best results we have) through the GUI. If the file which is 
+            produced is not the same as the one that is passed in, then there is a bug somewhere (note that the GUI cleans up 
+            the labels before running so it is safe to pass an already labeled sketch). 

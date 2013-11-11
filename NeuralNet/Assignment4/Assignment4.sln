@@ -1,0 +1,31 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assignment4", "Assignment4.csproj", "{34BC36DB-9E93-490F-A8DD-EAB8183E628B}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeuralNets", "..\NeuralNets\NeuralNets.csproj", "{8216E3F6-DC1C-456E-AEE0-43FB5FBA6A5D}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{34BC36DB-9E93-490F-A8DD-EAB8183E628B}.Debug.ActiveCfg = Debug|.NET
+		{34BC36DB-9E93-490F-A8DD-EAB8183E628B}.Debug.Build.0 = Debug|.NET
+		{34BC36DB-9E93-490F-A8DD-EAB8183E628B}.Release.ActiveCfg = Release|.NET
+		{34BC36DB-9E93-490F-A8DD-EAB8183E628B}.Release.Build.0 = Release|.NET
+		{8216E3F6-DC1C-456E-AEE0-43FB5FBA6A5D}.Debug.ActiveCfg = Debug|.NET
+		{8216E3F6-DC1C-456E-AEE0-43FB5FBA6A5D}.Debug.Build.0 = Debug|.NET
+		{8216E3F6-DC1C-456E-AEE0-43FB5FBA6A5D}.Release.ActiveCfg = Release|.NET
+		{8216E3F6-DC1C-456E-AEE0-43FB5FBA6A5D}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal
